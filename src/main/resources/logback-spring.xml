@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<configuration>
+
+    <property name="CONSOLE_PATTERN"
+              value="%d{yyyy-MM-dd HH:mm:ss.SSS} %magenta([%thread]) %highlight([%-3level]) %logger{5} - %msg %n"/>
+
+    <!-- 로그 레벨 -->
+    <!--
+    	1) ERROR : 오류 메시지 표시
+        2) WARN  : 경고성 메시지 표시
+        3) INFO  : 정보성 메시지 표시
+        4) DEBUG : 디버깅하기 위한 메시지 표시
+        5) TRACE :  Debug보다 훨씬 상세한 메시지 표시
+
+        아래에서는 info로 설정하였는데, 이 경우엔 INFO 보다 위에 있는 DEBUG와 TRACE는 표시하지 않는다.
+    -->
+    <property name="LOG_LEVEL" value="info"/>
+    <!-- appender 구성 - console 출력 세팅 -->
+    <appender name="CONSOLE" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder>
+            <pattern>${CONSOLE_PATTERN}</pattern>
+        </encoder>
+    </appender>
+
+<!--    <appender name="File" class="ch.qos.logback.core.rolling.RollingFileAppender">-->
+<!--        &lt;!&ndash;-->
+<!--            File 로그 출력 세팅-->
+<!--        &ndash;&gt;-->
+<!--    </appender>-->
+
+    <!-- Enable the Console and Sentry appenders, Console is provided as an example
+    of a non-Sentry logger that is set to a different logging threshold -->
+    <springProfile name="local">
+        <root level="${LOG_LEVEL}">
+            <appender-ref ref="CONSOLE"/>
+        </root>
+    </springProfile>
+
+    <springProfile name="dev">
+        <root level="${LOG_LEVEL}">
+            <appender-ref ref="CONSOLE"/>
+        </root>
+    </springProfile>
+</configuration>
