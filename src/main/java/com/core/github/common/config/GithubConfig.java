@@ -13,7 +13,7 @@ public class GithubConfig {
     @Bean
     public GitHub githubInit() throws IOException {
 
-        return new GitHubBuilder().withOAuthToken("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").build();
+        return new GitHubBuilder().withOAuthToken("").build();
 
     }
 
