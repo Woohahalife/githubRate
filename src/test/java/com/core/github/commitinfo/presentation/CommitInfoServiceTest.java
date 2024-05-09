@@ -1,16 +1,13 @@
 package com.core.github.commitinfo.presentation;
 
+import com.core.github.commitinfo.application.CommitInfoService;
 import com.core.github.commitinfo.domain.CommitInfo;
 import com.core.github.commitinfo.domain.dto.CommitInfoResponse;
-import com.core.github.commitinfo.domain.dto.CommitResponse;
 import com.core.github.commitinfo.infrastructure.CommitInfoRepository;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import org.kohsuke.github.GHPerson;
 import org.kohsuke.github.GHRepository;
 import org.kohsuke.github.PagedIterable;
-import org.mockito.BDDMockito;
-import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -23,11 +20,8 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 import java.util.stream.Collectors;
-import java.util.stream.Stream;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.assertj.core.api.Assertions.tuple;
-import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.BDDMockito.*;
 
 @SpringBootTest

@@ -1,4 +1,4 @@
-package com.core.github.commitinfo.presentation;
+package com.core.github.commitinfo.application;
 
 import com.core.github.commitinfo.domain.CommitInfo;
 import com.core.github.commitinfo.domain.dto.CommitInfoResponse;
