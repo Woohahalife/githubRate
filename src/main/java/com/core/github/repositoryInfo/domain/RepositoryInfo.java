@@ -16,8 +16,10 @@ public class RepositoryInfo {
     @Column(name = "id")
     private Long id;
 
+    @Column(name = "owner_name")
     private String ownerName;
 
+    @Column(name = "repo_name")
     private String repoName;
 
     @Builder

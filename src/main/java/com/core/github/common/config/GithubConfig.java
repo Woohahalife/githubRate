@@ -13,11 +13,9 @@ public class GithubConfig {
     @Bean
     public GitHub githubInit() throws IOException {
 
-        return new GitHubBuilder().withOAuthToken("ghp_0soPztjz8ZbNR5COed3hLdndYjoleY0vc8s").build();
+        return new GitHubBuilder().withOAuthToken("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").build();
 
     }
-
-
 
 }
 

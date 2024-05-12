@@ -1,8 +1,16 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <configuration>
 
-    <property name="CONSOLE_PATTERN"
-              value="%d{yyyy-MM-dd HH:mm:ss.SSS} %magenta([%thread]) %highlight([%-3level]) %logger{5} - %msg %n"/>
+    <conversionRule conversionWord="clr" converterClass="org.springframework.boot.logging.logback.ColorConverter"/>
+    <property name="CONSOLE_LOG_PATTERN"
+              value="%green(%d{yyyy-MM-dd HH:mm:ss.SSS, ${logback.timezone:-Asia/Seoul}}) %magenta([%thread]) %highlight(%5level) %-50logger{50} - %yellow(%msg%n)"/>
+    <property name="FILE_LOG_PATTERN"
+              value="%d{yyyy-MM-dd HH:mm:ss.SSS, ${logback.timezone:-Asia/Seoul}} [%thread] %5level %logger - %msg%n"/>
+
+    <include resource="console-appender.xml"/>
+    <!--    <include resource="default-appender.xml"/>-->
+    <!--    <include resource="http-appender.xml"/>-->
+    <!--    <include resource="error-appender.xml"/>-->
 
     <!-- 로그 레벨 -->
     <!--
@@ -14,31 +22,26 @@
 
         아래에서는 info로 설정하였는데, 이 경우엔 INFO 보다 위에 있는 DEBUG와 TRACE는 표시하지 않는다.
     -->
+<!--    <logger name="ExceptionLogger" level="WARN" additivity="false">-->
+<!--        <appender-ref ref="ERROR"/>-->
+<!--    </logger>-->
+
+<!--    <logger name="HttpLogger" level="INFO" additivity="false">-->
+<!--        <appender-ref ref="HTTP"/>-->
+<!--    </logger>-->
+
+
+    <!--    <appender name="File" class="ch.qos.logback.core.rolling.RollingFileAppender">-->
+    <!--        &lt;!&ndash;-->
+    <!--            File 로그 출력 세팅-->
+    <!--        &ndash;&gt;-->
+    <!--    </appender>-->
     <property name="LOG_LEVEL" value="info"/>
-    <!-- appender 구성 - console 출력 세팅 -->
-    <appender name="CONSOLE" class="ch.qos.logback.core.ConsoleAppender">
-        <encoder>
-            <pattern>${CONSOLE_PATTERN}</pattern>
-        </encoder>
-    </appender>
 
-<!--    <appender name="File" class="ch.qos.logback.core.rolling.RollingFileAppender">-->
-<!--        &lt;!&ndash;-->
-<!--            File 로그 출력 세팅-->
-<!--        &ndash;&gt;-->
-<!--    </appender>-->
-
-    <!-- Enable the Console and Sentry appenders, Console is provided as an example
-    of a non-Sentry logger that is set to a different logging threshold -->
-    <springProfile name="local">
+    <springProfile name="local,dev">
         <root level="${LOG_LEVEL}">
             <appender-ref ref="CONSOLE"/>
         </root>
     </springProfile>
 
-    <springProfile name="dev">
-        <root level="${LOG_LEVEL}">
-            <appender-ref ref="CONSOLE"/>
-        </root>
-    </springProfile>
 </configuration>

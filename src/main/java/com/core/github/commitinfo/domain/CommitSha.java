@@ -16,6 +16,7 @@ public class CommitSha {
     @Column(name = "commit_date")
     public LocalDateTime commitDate;
 
+    @Column(name = "commit_url")
     public String commitUrl;
 
     @ManyToOne

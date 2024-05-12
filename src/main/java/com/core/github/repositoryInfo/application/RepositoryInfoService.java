@@ -4,6 +4,7 @@ import com.core.github.repositoryInfo.application.dto.RepositoryInfoServiceReque
 import com.core.github.repositoryInfo.domain.RepositoryInfo;
 import com.core.github.repositoryInfo.infrastructure.RepositoryInfoRepository;
 import com.core.github.repositoryInfo.presentation.dto.RepositoryInfoResponse;
+import com.core.github.repositoryInfo.presentation.dto.RepositoryResponse;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.kohsuke.github.GHRepository;
@@ -11,6 +12,7 @@ import org.kohsuke.github.GitHub;
 import org.springframework.stereotype.Service;
 
 import java.io.IOException;
+import java.util.List;
 
 @RequiredArgsConstructor
 @Service
@@ -39,4 +41,9 @@ public class RepositoryInfoService {
 
         return RepositoryInfoResponse.of(repositoryInfoRepository.save(repositoryInfo));
     }
+
+//    public List<RepositoryResponse> allRepositoryRead() {
+//
+//
+//    }
 }

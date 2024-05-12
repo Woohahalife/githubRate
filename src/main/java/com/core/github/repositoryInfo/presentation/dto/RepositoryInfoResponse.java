@@ -9,17 +9,20 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class RepositoryInfoResponse {
 
+    private Long id;
     private String ownerName;
     private String repo;
 
     @Builder
-    private RepositoryInfoResponse(String ownerName, String repo) {
+    private RepositoryInfoResponse(Long id, String ownerName, String repo) {
+        this.id = id;
         this.ownerName = ownerName;
         this.repo = repo;
     }
 
     public static RepositoryInfoResponse of(RepositoryInfo repositoryInfo) {
         return RepositoryInfoResponse.builder()
+                .id(repositoryInfo.getId())
                 .ownerName(repositoryInfo.getOwnerName())
                 .repo(repositoryInfo.getRepoName())
                 .build();

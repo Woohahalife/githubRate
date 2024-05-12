@@ -22,6 +22,9 @@ public class CommitInfo {
 
     private String committer;
 
+    @Column(name = "new_column")
+    private String newColumn;
+
     @OneToMany(mappedBy = "commitInfo")
     public List<CommitSha> commitSha = new ArrayList<>();
 

@@ -2,17 +2,16 @@ package com.core.github.repositoryInfo.presentation;
 
 import com.core.github.repositoryInfo.application.RepositoryInfoService;
 import com.core.github.repositoryInfo.presentation.dto.RepositoryInfoRequest;
+import com.core.github.repositoryInfo.presentation.dto.RepositoryInfoResponse;
+import com.core.github.repositoryInfo.presentation.dto.RepositoryResponse;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.kohsuke.github.GitHub;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.io.IOException;
+import java.net.URI;
+import java.util.List;
 
 @RequiredArgsConstructor
 @RequestMapping("/github")
@@ -20,15 +19,22 @@ import java.io.IOException;
 @Slf4j
 public class RepositoryInfoController {
 
-    private GitHub gitHub;
-    private RepositoryInfoService repositoryInfoService;
+    private final RepositoryInfoService repositoryInfoService;
 
-    @GetMapping("")
-    public ResponseEntity<Void> registerRepositoryInfo(@RequestBody RepositoryInfoRequest request) throws IOException {
+    @PostMapping("/repository/create")
+    public ResponseEntity<RepositoryInfoResponse> registerRepositoryInfo(@RequestBody RepositoryInfoRequest request) throws IOException {
 
-        repositoryInfoService.registerRepositoryInfo(request.toServiceRequest());
+        RepositoryInfoResponse response = repositoryInfoService.registerRepositoryInfo(request.toServiceRequest());
 
-        return ResponseEntity.ok().build();
+        return ResponseEntity.created(URI.create("/repository" + response.getId() + "/read")).body(response);
+    }
+
+    @GetMapping("/repository/allread")
+    public ResponseEntity<List<RepositoryResponse>> allRepositoryRead() {
+
+//        List<RepositoryResponse> responses = repositoryInfoService.allRepositoryRead();
+
+        return null;
     }
 
 }

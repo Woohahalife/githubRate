@@ -3,17 +3,9 @@ spring:
     activate:
       on-profile: local
 
-  h2:
-    console:
-      enabled: true
-  datasource:
-    url: jdbc:h2:mem:testdb;MODE=Oracle
-    hikari:
-      jdbc-url: jdbc:h2:mem:testdb
-
   jpa:
     hibernate:
-      ddl-auto: update
+      ddl-auto: validate
       naming:
         physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
     show_sql: true
@@ -23,6 +15,21 @@ spring:
         format_sql: true
         default_batch_fetch_size: 1000
     open-in-view: false
+    generate-ddl: false
+
+  h2:
+    console:
+      enabled: true
+  datasource:
+    hikari:
+      jdbc-url: jdbc:h2:mem:testdb;MODE=MySQL
+      username: sa
+      password:
+      driver-class-name: org.h2.Driver
+
+  flyway:
+    enabled: true
+    baseline-on-migrate: true
 
 springdoc:
   api-docs:
