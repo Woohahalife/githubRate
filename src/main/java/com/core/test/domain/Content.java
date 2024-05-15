@@ -1,6 +1,7 @@
 package com.core.test.domain;
 
 import com.core.test.common.BaseEntity;
+import com.core.test.domain.constant.Status;
 import jakarta.persistence.*;
 import lombok.AccessLevel;
 import lombok.Builder;
@@ -20,11 +21,15 @@ public class Content extends BaseEntity {
 
     private String content;
 
+    @Enumerated(EnumType.STRING)
+    private Status status;
+
     @Builder
     public Content(Long id, String name, String content) {
-        super();
         this.id = id;
         this.name = name;
         this.content = content;
+        this.status = Status.ACTIVE;
     }
+
 }

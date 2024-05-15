@@ -1,5 +1,6 @@
 package com.core.test.service.dto;
 
+import com.core.test.domain.constant.Status;
 import lombok.AccessLevel;
 import lombok.Builder;
 import lombok.Getter;
@@ -13,9 +14,12 @@ public class ContentServiceRequest {
 
     private String content;
 
+    private Status status;
+
     @Builder
-    private ContentServiceRequest(String name, String content) {
+    private ContentServiceRequest(String name, String content, Status status) {
         this.name = name;
         this.content = content;
+        this.status = status;
     }
 }
