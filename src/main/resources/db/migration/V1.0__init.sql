@@ -1,4 +1,4 @@
-create table if not exists CommitInfo
+create table if not exists commit_info
 (
     id        bigint auto_increment,
     committer varchar(255),
@@ -6,7 +6,7 @@ create table if not exists CommitInfo
     primary key (id)
 );
 
-create table if not exists CommitSha
+create table if not exists commit_sha
 (
     id               bigint auto_increment,
     commit_date      timestamp(6),
@@ -16,7 +16,7 @@ create table if not exists CommitSha
     primary key (id)
 );
 
-create table if not exists RepositoryInfo
+create table if not exists repository_info
 (
     id        bigint auto_increment,
     owner_name varchar(255),
@@ -24,8 +24,8 @@ create table if not exists RepositoryInfo
     primary key (id)
 );
 
-alter table CommitSha
+alter table commit_sha
     add constraint FKevhl13yji8uw8i2jsbmttl7mb
         foreign key (commit_author_id)
-            references CommitInfo(id)
+            references Commit_info(id)
 

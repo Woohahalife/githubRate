@@ -5,7 +5,7 @@ spring:
 
   jpa:
     hibernate:
-      ddl-auto: validate
+      ddl-auto: update
       naming:
         physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
     show_sql: true
@@ -28,8 +28,8 @@ spring:
       driver-class-name: org.h2.Driver
 
   flyway:
-    enabled: true
-    baseline-on-migrate: true
+    enabled: false
+    baseline-on-migrate: false
 
 springdoc:
   api-docs:

@@ -1,0 +1,7 @@
+POST http://localhost:8080/api/content/getAll
+Content-Type: application/json
+
+{
+  "name": "name1",
+  "content": "content"
+}
