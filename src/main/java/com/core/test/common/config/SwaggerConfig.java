@@ -1,4 +1,4 @@
-package com.core.test.common;
+package com.core.test.common.config;
 
 import org.springdoc.core.models.GroupedOpenApi;
 import org.springframework.context.annotation.Bean;

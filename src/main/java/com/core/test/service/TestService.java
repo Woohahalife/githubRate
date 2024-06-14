@@ -12,13 +12,10 @@ import org.springframework.stereotype.Service;
 @RequiredArgsConstructor
 public class TestService {
 
+    private final ContentMapper contentMapper;
     private final TestContentRepository contentRepository;
 
-    public ContentResponse saveContent(ContentServiceRequest serviceRequest, ContentMapper contentMapper) {
-
-//        System.out.println(serviceRequest.getName());
-//        System.out.println(serviceRequest.getContent());
-//        System.out.println("serviceRequest = " + serviceRequest.getStatus());
+    public ContentResponse saveContent(ContentServiceRequest serviceRequest) {
 
         Content content = contentMapper.toEntity(serviceRequest);
 
@@ -26,4 +23,5 @@ public class TestService {
 
         return contentMapper.toResponse(saveContent);
     }
+
 }

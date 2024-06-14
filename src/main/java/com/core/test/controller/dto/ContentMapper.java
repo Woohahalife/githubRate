@@ -11,10 +11,11 @@ public interface ContentMapper {
 
     ContentServiceRequest toService(ContentControllerRequest controllerRequest);
 
+//    @Mapping(source = "status", target = "status", defaultValue = "ACTIVE")
     @Mapping(target = "id", ignore = true)
-//    @Mapping(target = "status", defaultValue = "ACTIVE")
     Content toEntity(ContentServiceRequest serviceRequest);
 
     ContentResponse toResponse(Content content);
 
 }
+

@@ -22,8 +22,10 @@ public class TestController {
     @PostMapping("/content/getAll")
     public ResponseEntity<ContentResponse> saveContent(@RequestBody ContentControllerRequest contentRequest) {
 
-        ContentResponse response = testService.saveContent(contentMapper.toService(contentRequest), contentMapper);
+        ContentResponse response = testService.saveContent(contentMapper.toService(contentRequest));
 
         return ResponseEntity.ok(response);
+
     }
+
 }
